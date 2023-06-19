@@ -1,35 +1,13 @@
-name: lint
-on:
-  push:
-    tags:
-      - v*
-    branches:
-      - master
-      - main
-  pull_request:
+name: E2E Test
+
+on: [push]
+
 jobs:
-  lint:
+  Gherkin-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: gherkin-lint
-        uses: nhatthm/gherkin-lint-action@v1
-        with:
-          # Optional: Version of gherkin-lint to use in the `npm install -g gherkin-lint` command. Default to `latest`.
-          # version: latest
-
-          # Optional: Comma separated list of feature files/glob patterns. Default to current working directory.
-          feature_files: features/*
-
-          # Optional: Use a custom configuration file instead of the default one.
-          # config_file: .gherkin-lintrc
-
-          # Optional: Output format. Possible values: json, stylish, xunit. Default to `stylish`.
-          # format: stylish
-
-          # Optional: Comma seperated list of files/glob patterns that the linter should ignore, overrides .gherkin-lintignore file
-          # ignore:
-
-          # Optional: Comma seperated list of additional rule directories
-          # rule_dirs:
+    - uses: actions/checkout@v1
+    - uses: restqa/gherkin-linter-action@0.0.1
+      with:
+        path: 'test/'
+        config_file: 'test/.gherkin-lintrc'
