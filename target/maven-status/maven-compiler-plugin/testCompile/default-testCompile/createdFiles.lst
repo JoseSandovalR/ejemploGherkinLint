@@ -1,0 +1,5 @@
+Page\BasePage.class
+Page\MiPrimerRobotPage.class
+StepDefinition\Hook.class
+StepDefinition\MiPrimerRobotDefinition.class
+CucumberTest.class
