@@ -10,4 +10,4 @@ jobs:
     - uses: restqa/gherkin-linter-action@0.0.1
       with:
         path: '**/*.feature'
-        config_file: '**/*.gherkin-lintrc'
+        config_file: 'src/test'
