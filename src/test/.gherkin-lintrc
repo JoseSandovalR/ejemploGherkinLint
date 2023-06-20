@@ -1,3 +1,4 @@
 {
-  "no-tags-on-backgrounds": "on"
+  "no-tags-on-backgrounds": "on",
+  "file-name": ["on", {"style": "camelCase"}]
 }
