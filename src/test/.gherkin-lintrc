@@ -1,5 +1,3 @@
 {
-  "rules": {
-      "file-name": ["on", {"style": "camelCase"}]
-  }
+  "file-name": ["on", {"style": "camelCase"}]
 }
