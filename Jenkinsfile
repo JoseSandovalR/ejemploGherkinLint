@@ -5,7 +5,7 @@ pipeline {
     stage('Checkout') {
       steps {
         // Clonar el repositorio de GitHub
-        git 'https://github.com/tu-usuario/tu-repositorio.git'
+        git credentialsId: 'github-credentials', url: 'https://github.com/JoseSandovalR/ejemploGherkinLint'
       }
     }
 
