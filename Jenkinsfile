@@ -5,7 +5,7 @@ pipeline {
     stage('Lint') {
       steps {
         // Ejecutar Gherkin Lint en los archivos de características
-        sh 'gherkin-lint -c src/test/.gherkin-lintrc src/test/resources/feature'
+        sh 'gplint -c src/test/.gherkin-lintrc src/test/resources/feature'
       }
     }
 
