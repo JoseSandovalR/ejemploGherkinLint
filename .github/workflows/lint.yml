@@ -6,7 +6,7 @@ jobs:
   Gherkin-lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
     - uses: JoseSandovalR/gp-linter-actions@1.0
       with:
         path: 'src/test/resources/feature'
