@@ -5,6 +5,6 @@
   "no-dupe-feature-names": "error",
   "no-empty-file": "error",
   "no-multiple-empty-lines": "error",
-  "new-line-at-eof": ["error", "yes"],
+  "new-line-at-eof": ["error", "off"],
   "no-trailing-spaces": "error"
 }
