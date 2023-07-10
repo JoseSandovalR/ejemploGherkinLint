@@ -6,7 +6,7 @@ pipeline {
       steps {
         script {
           // Capturar la salida de gplint en una variable de entorno
-          env.LINT_OUTPUT = sh(returnStdout: true, script: 'gplint -c .gherkin-lintrc src/test/resources/feature || true').trim()
+          env.LINT_OUTPUT = sh(returnStdout: true, script: 'gplint -c .gplintrc src/test/resources/feature || true').trim()
         }
       }
     }
