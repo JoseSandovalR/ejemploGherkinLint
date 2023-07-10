@@ -9,5 +9,5 @@ Feature: Inicio de sesión
 
   Scenario: Iniciar sesión exitosamente
     Given que tengo una cuenta registrada
-    When ingreso mis credenciales
-    Then inicio sesión correctamente
+    Then ingreso mis credenciales
+    When inicio sesión correctamente
