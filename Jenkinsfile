@@ -32,6 +32,13 @@ pipeline {
         }
     }
 
+     stage('Print report.xml') {
+          steps {
+            // Imprimir el contenido del archivo report.xml
+            sh 'cat report.xml'
+          }
+        }
+
 
     // Agrega más etapas según tus necesidades
   }
