@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: restqa/gherkin-linter-action@0.0.1
+    - uses: JoseSandovalR/gp-linter-actions@1.0
       with:
         path: 'src/test/resources/feature'
-        config_file: 'src/test/.gherkin-lintrc'
+        config_file: './.gherkin-lintrc'
