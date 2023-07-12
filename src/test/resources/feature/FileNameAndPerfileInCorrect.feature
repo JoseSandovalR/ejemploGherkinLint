@@ -5,7 +5,6 @@ Feature: Example Feature file namer incorrect
     When I do something
     Then I expect a result
 
-Feature: Inicio de sesión
 
   Scenario: Iniciar sesión exitosamente
     Given que tengo una cuenta registrada
