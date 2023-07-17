@@ -1,0 +1,9 @@
+{
+  "indentation": "off",
+  "file-name": ["error", {"style": "camelCase"}],
+  "no-dupe-scenario-names": "error",
+  "no-dupe-feature-names": "error",
+  "no-empty-file": "error",
+  "no-multiple-empty-lines": "error",
+  "no-trailing-spaces": "error"
+}
