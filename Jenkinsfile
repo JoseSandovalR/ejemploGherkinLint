@@ -1,17 +1,10 @@
 pipeline {
   agent any
 
-  triggers {
-    changed {
-      branch 'main'
-      pathFilter('src/test/resources/feature/**') // Ruta de los archivos que quieres monitorear
-    }
-  }
-
   stages {
     stage('Lint') {
       when {
-        triggeredBy 'changed'
+        changeset "src/test/resources/feature/**"
       }
       steps {
         script {
@@ -23,7 +16,7 @@ pipeline {
 
     stage('Generate XML report') {
       when {
-        triggeredBy 'changed'
+        changeset "src/test/resources/feature/**"
       }
       steps {
         // Clonar el repositorio que contiene el script de Python
