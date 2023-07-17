@@ -3,9 +3,6 @@ pipeline {
 
   stages {
     stage('Lint') {
-      when {
-        changeset "src/test/resources/feature/**"
-      }
       steps {
         script {
           // Capturar la salida de gplint en una variable de entorno
@@ -14,10 +11,8 @@ pipeline {
       }
     }
 
+
     stage('Generate XML report') {
-      when {
-        changeset "src/test/resources/feature/**"
-      }
       steps {
         // Clonar el repositorio que contiene el script de Python
         git branch: 'main', url: 'https://github.com/JoseSandovalR/gplintToXmlPython.git'
@@ -31,11 +26,26 @@ pipeline {
       }
 
       post {
-        always {
-          recordIssues enabledForFailure: true, aggregatingResults: true, tool: checkStyle(pattern: 'report.xml')
+            always {
+                recordIssues enabledForFailure: true, aggregatingResults: true, tool: checkStyle(pattern: 'report.xml')
+            }
         }
+    }
+
+     stage('Print lint_output.txt') {
+      steps {
+        // Imprimir el contenido del archivo report.xml
+        sh 'cat lint_output.txt'
       }
     }
+
+     stage('Print report.xml') {
+          steps {
+            // Imprimir el contenido del archivo report.xml
+            sh 'cat report.xml'
+          }
+        }
+
 
     // Agrega más etapas según tus necesidades
   }
