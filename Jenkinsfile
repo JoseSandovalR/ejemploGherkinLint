@@ -1,8 +1,18 @@
 pipeline {
   agent any
 
+  triggers {
+    changed {
+      branch 'main'
+      pathFilter('src/test/resources/feature/**') // Ruta de los archivos que quieres monitorear
+    }
+  }
+
   stages {
     stage('Lint') {
+      when {
+        triggeredBy 'changed'
+      }
       steps {
         script {
           // Capturar la salida de gplint en una variable de entorno
@@ -11,8 +21,10 @@ pipeline {
       }
     }
 
-
     stage('Generate XML report') {
+      when {
+        triggeredBy 'changed'
+      }
       steps {
         // Clonar el repositorio que contiene el script de Python
         git branch: 'main', url: 'https://github.com/JoseSandovalR/gplintToXmlPython.git'
@@ -26,19 +38,11 @@ pipeline {
       }
 
       post {
-            always {
-                recordIssues enabledForFailure: true, aggregatingResults: true, tool: checkStyle(pattern: 'report.xml')
-            }
+        always {
+          recordIssues enabledForFailure: true, aggregatingResults: true, tool: checkStyle(pattern: 'report.xml')
         }
+      }
     }
-
-     stage('Print report.xml') {
-          steps {
-            // Imprimir el contenido del archivo report.xml
-            sh 'cat report.xml'
-          }
-        }
-
 
     // Agrega más etapas según tus necesidades
   }
