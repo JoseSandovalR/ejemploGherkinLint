@@ -22,7 +22,7 @@ jobs:
 
       - name: Print Lint Output
         run: cat lint_output.txt
-
+        
       - name: Run Python Script
         run: |
           python3 --version
