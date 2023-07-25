@@ -27,7 +27,7 @@ jobs:
           python3 path/to/gplintToXmlPython/main.py lint_output.txt
 
       - name: Checkstyle Report
-        uses: nikitasavinov/checkstyle-action@v2
+        uses: https://github.com/checkstyle/checkstyle@master
         with:
           name: Gherkin Lint Report
           checkstyle_report: report.xml
