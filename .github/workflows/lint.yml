@@ -18,7 +18,7 @@ jobs:
         run: npm install -g gplint
 
       - name: Lint Gherkin Code
-        run: gplint -c './.gherkin-lintrc' 'src/test/resources/feature' > lint_output.txt
+        run: gplint -c '.gherkin-lintrc' 'src/test/resources/feature' > lint_output.txt
 
       - name: Run Python Script
         run: |
