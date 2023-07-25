@@ -27,7 +27,9 @@ jobs:
         run: |
           python3 --version
           python3 -m pip install xmltodict
-          python3 path/to/gplintToXmlPython/main.py lint_output.txt
+          git clone https://github.com/JoseSandovalR/gplintToXmlPython.git
+          python3 gplintToXmlPython/gpLintReportToXml.py lint_output.txt
+        working-directory: ejemploGherkinLint
 
       - name: Checkstyle Report
         uses: nikitasavinov/checkstyle-action@master
@@ -35,3 +37,4 @@ jobs:
           name: Gherkin Lint Report
           checkstyle_report: report.xml
           fail_on_error: true
+
