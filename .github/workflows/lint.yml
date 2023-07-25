@@ -23,18 +23,28 @@ jobs:
       - name: Print Lint Output
         run: cat lint_output.txt
 
+      - name: Upload Lint Output
+        uses: actions/upload-artifact@v2
+        with:
+          name: lint-output
+          path: lint_output.txt
+
       - name: Run Python Script
+        id: python-script
         run: |
           python3 --version
           python3 -m pip install xmltodict
-          git clone https://github.com/JoseSandovalR/gplintToXmlPython.git
-          python3 gplintToXmlPython/gpLintReportToXml.py lint_output.txt
-        working-directory: ejemploGherkinLint
+          python3 path/to/gplintToXmlPython/gpLintReportToXml.py ${{ needs.gherkin_lint.outputs.lint_output_path }}
+
+      - name: Upload Checkstyle Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: checkstyle-report
+          path: ${{ steps.python-script.outputs.report_path }}
 
       - name: Checkstyle Report
         uses: nikitasavinov/checkstyle-action@master
         with:
           name: Gherkin Lint Report
-          checkstyle_report: report.xml
+          checkstyle_report: ${{ steps.python-script.outputs.report_path }}
           fail_on_error: true
-
