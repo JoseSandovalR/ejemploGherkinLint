@@ -34,4 +34,8 @@ jobs:
         with:
           name: Gherkin Lint Report
           checkstyle_report: report.xml
+<<<<<<< HEAD
           fail_on_error: true
+=======
+          fail_on_error: true
+>>>>>>> bff6f5780aaca0520463c5132051e95a6d9a3ed8
