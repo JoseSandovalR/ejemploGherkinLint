@@ -48,12 +48,10 @@ jobs:
           name: checkstyle-report
           path: report.xml
 
-      - name: Checkstyle Report
-        uses: nikitasavinov/checkstyle-action@master
-        with:
-          name: Gherkin Lint Report
-          checkstyle_report: report.xml
-          fail_on_error: false
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          checkstyle_version: '8.42'
-          workdir: './src/test/resources/feature'
+      - name: Install reviewdog
+        run: |
+          wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s
+          sudo mv reviewdog /usr/local/bin/
+
+      - name: Run reviewdog
+        run: reviewdog -f=checkstyle -reporter=github-pr-check -fail-on-error=false -name="Gherkin Lint Report" -level=warning -diff="git diff origin/master --name-only" report.xml
