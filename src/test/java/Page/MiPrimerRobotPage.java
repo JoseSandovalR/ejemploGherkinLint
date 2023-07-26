@@ -13,7 +13,7 @@ public class MiPrimerRobotPage extends BasePage {
     //xpath correcto
     @FindBy(xpath = "//label[contains(text(),'Full Name*')]")
     //xpath incorrecto
-   // @FindBy(xpath = "//label[contains(text(),'noooooooo')]")
+    // @FindBy(xpath = "//label[contains(text(),'noooooooo')]")
     private WebElement labelFullName;
 
     @FindBy(xpath = "//textarea[@ng-model='Adress' and @rows='3']")
@@ -22,23 +22,23 @@ public class MiPrimerRobotPage extends BasePage {
     @FindBy(xpath = "//input[@type='radio' and @value='Male']")
     private WebElement radioButtonMale;
 
-    public void sendkeysTextArea(String texto){
+    public void sendkeysTextArea(String texto) {
         waitElementIsVisible(textArea);
         textArea.sendKeys(texto);
     }
 
-    public void getTextPrimerNombre(){
+    public void getTextPrimerNombre() {
         waitElementIsVisible(labelFullName);
         labelFullName.getText();
     }
 
-    public void clickRadioButtonMale(){
+    public void clickRadioButtonMale() {
         waitElementIsVisible(radioButtonMale);
         radioButtonMale.click();
     }
 
-    public boolean isvisiblePrimerNombre(){
-        waitElementIsVisibleTimeOut(labelFullName,10);
+    public boolean isvisiblePrimerNombre() {
+        waitElementIsVisibleTimeOut(labelFullName, 10);
         return labelFullName.isDisplayed();
     }
 }
