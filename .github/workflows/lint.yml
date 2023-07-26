@@ -39,6 +39,9 @@ jobs:
           python3 -m pip install xmltodict
           python3 gplintToXmlPython/gpLintReportToXml.py lint_output.txt
 
+      - name: Show Checkstyle Report Content
+        run: cat report.xml
+
       - name: Upload Checkstyle Report
         uses: actions/upload-artifact@v2
         with:
