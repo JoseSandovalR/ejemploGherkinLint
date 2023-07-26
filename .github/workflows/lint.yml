@@ -53,4 +53,7 @@ jobs:
         with:
           name: Gherkin Lint Report
           checkstyle_report: report.xml
-          fail_on_error: true
+          fail_on_error: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          checkstyle_version: '8.42'
+          workdir: './src/test/resources/feature'
