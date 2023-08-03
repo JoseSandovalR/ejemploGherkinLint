@@ -39,7 +39,6 @@ public class MiPrimerRobotPage extends BasePage {
 
     public boolean isvisiblePrimerNombre(){
         waitElementIsVisibleTimeOut(labelFullName,10);
-        return isV
-        isible(labelFullName);
+        return isVisible(labelFullName);
     }
 }

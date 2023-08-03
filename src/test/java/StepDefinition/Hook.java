@@ -19,8 +19,10 @@ public class Hook {
 
     @Before
     public static void createDriver() throws MalformedURLException {
-   //     System.setProperty("webdriver.chrome.driver","C:\\Users\\jose_\\OneDrive\\Escritorio\\Proyecto\\arquetipoFrameworkAutomatizacion\\src\\test\\java\\Runner\\LocalChromeRunner\\chromedriver.exe");
-     //    driver = new ChromeDriver();
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\jose_\\OneDrive\\Escritorio\\Proyecto\\ejemploGherkinLint\\src\\test\\java\\Runner\\LocalChromeRunner\\chromedriver.exe");
+         driver = new ChromeDriver();
+
+         /*
         ChromeOptions options = new ChromeOptions();
 
         options.setCapability("browserstack.user","josesandoval_p9o8dE");
@@ -29,14 +31,14 @@ public class Hook {
         options.setCapability("browser", "chrome");
 
         driver = new RemoteWebDriver(new URL("https://hub-cloud.browserstack.com/wd/hub"), options);
-
+*/
         driver.manage().window().maximize();
     }
 
     @After
     public static void quitDriver(){
         if(driver!=null){
-            driver.quit();
+            driver.close();
         }
     }
 }
