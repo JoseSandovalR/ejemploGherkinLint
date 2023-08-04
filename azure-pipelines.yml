@@ -4,7 +4,7 @@ trigger:
       - ramaTriger
 
 pool:
-  name: 'pool-jose'
+  name: 'Azure Pipelines'
 
 steps:
   - checkout: self
