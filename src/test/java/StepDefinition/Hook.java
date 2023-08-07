@@ -20,6 +20,7 @@ public class Hook {
     @Before
     public static void createDriver() throws MalformedURLException {
 
+        /*
         String os = System.getProperty("os.name").toLowerCase();
         String driverPath = "";
 
@@ -37,7 +38,9 @@ public class Hook {
 
         driver = new ChromeDriver();
 
-         /*
+         */
+
+
         ChromeOptions options = new ChromeOptions();
 
         options.setCapability("browserstack.user","josesandoval_p9o8dE");
@@ -46,7 +49,7 @@ public class Hook {
         options.setCapability("browser", "chrome");
 
         driver = new RemoteWebDriver(new URL("https://hub-cloud.browserstack.com/wd/hub"), options);
-*/
+
         driver.manage().window().maximize();
     }
 
