@@ -19,8 +19,23 @@ public class Hook {
 
     @Before
     public static void createDriver() throws MalformedURLException {
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\jose_\\OneDrive\\Escritorio\\Proyecto\\ejemploGherkinLint\\src\\test\\java\\Runner\\LocalChromeRunner\\chromedriver.exe");
-         driver = new ChromeDriver();
+
+        String os = System.getProperty("os.name").toLowerCase();
+        String driverPath = "";
+
+        if (os.contains("win")) {
+            driverPath = "src/test/java/Runner/LocalChromeRunner/windows/chromedriver.exe";
+        } else if (os.contains("nux") || os.contains("nix")) {
+            driverPath = "/src/test/java/Runner/LocalChromeRunner/chromedriver.exe";
+        } else if (os.contains("mac")) {
+            driverPath = "/src/test/java/Runner/LocalChromeRunner/chromedriver.exe";
+        } else {
+            throw new IllegalStateException("Your OS is not supported!!");
+        }
+
+        System.setProperty("webdriver.chrome.driver", driverPath);
+
+        driver = new ChromeDriver();
 
          /*
         ChromeOptions options = new ChromeOptions();
