@@ -56,7 +56,7 @@ public class Hook {
     @After
     public static void quitDriver(){
         if(driver!=null){
-            driver.close();
+            driver.quit();
         }
     }
 }
