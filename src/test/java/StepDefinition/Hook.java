@@ -26,7 +26,7 @@ public class Hook {
         if (os.contains("win")) {
             driverPath = "src/test/java/Runner/LocalChromeRunner/windows/chromedriver.exe";
         } else if (os.contains("nux") || os.contains("nix")) {
-            driverPath = "/src/test/java/Runner/LocalChromeRunner/chromedriver.exe";
+            driverPath = "/src/test/java/Runner/LocalChromeRunner/linux/chromedriver.exe";
         } else if (os.contains("mac")) {
             driverPath = "/src/test/java/Runner/LocalChromeRunner/chromedriver.exe";
         } else {
