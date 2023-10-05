@@ -22,16 +22,36 @@ jobs:
 
       - name: Print Lint Output
         run: cat lint_output.txt
-        
+
+      - name: Upload Lint Output
+        uses: actions/upload-artifact@v2
+        with:
+          name: lint-output
+          path: lint_output.txt
+
+      - name: Clone Python Script Repository
+        run: git clone https://github.com/JoseSandovalR/gplintToXmlPython.git
+
       - name: Run Python Script
+        id: python-script
         run: |
           python3 --version
           python3 -m pip install xmltodict
-          python3 path/to/gplintToXmlPython/main.py lint_output.txt
+          python3 gplintToXmlPython/gpLintReportToXml.py lint_output.txt
 
-      - name: Checkstyle Report
-        uses: nikitasavinov/checkstyle-action@master
+      - name: Show Checkstyle Report Content
+        run: cat report.xml
+
+      - name: Upload Checkstyle Report
+        uses: actions/upload-artifact@v2
         with:
-          name: Gherkin Lint Report
-          checkstyle_report: report.xml
-          fail_on_error: true
+          name: checkstyle-report
+          path: report.xml
+
+      - name: Install reviewdog
+        run: |
+          wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s
+          sudo mv reviewdog /usr/local/bin/
+
+      - name: Run reviewdog
+        run: reviewdog -f=checkstyle -reporter=github-pr-check -fail-on-error=false -name="Gherkin Lint Report" -level=warning -diff="git diff origin/master --name-only" report.xml
